@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kuis Trigonometri Interaktif Class X</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- html2pdf.js for PDF Generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <!-- html2canvas for JPG/PNG Generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            user-select: none; /* Anti Copy text */
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #311b92 100%);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+        @keyframes pulse-red {
+            0%, 100% { background-color: rgba(239, 68, 68, 0.1); }
+            50% { background-color: rgba(239, 68, 68, 0.3); }
+        }
+        .cheat-alert-anim {
+            animation: pulse-red 1s infinite;
+        }
+    </style>
+</head>
+<body class="gradient-bg min-h-screen text-slate-800 relative flex flex-col justify-between overflow-x-hidden">
+
+    <div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
+        <div class="absolute -top-40 -left-40 w-96 h-96 bg-indigo-500/20 rounded-full blur-3xl"></div>
+        <div class="absolute top-1/2 -right-40 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl"></div>
+        <div class="absolute -bottom-40 left-1/3 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl"></div>
+    </div>
+
+    <!-- Header / Navbar -->
+    <header class="relative z-10 w-full px-4 py-4 max-w-5xl mx-auto">
+        <div class="glass-card rounded-2xl px-6 py-4 flex justify-between items-center shadow-xl border border-white/20">
+            <div class="flex items-center space-x-3">
+                <div class="bg-white p-1.5 rounded-xl shadow-md border border-slate-100 flex items-center justify-center shrink-0">
+                    <img src="https://cdn.corenexis.com/f/R7u6jbL3y8O.png" alt="Logo SMK Karya Bahana Mandiri" class="h-10 md:h-12 w-auto object-contain">
+                </div>
+                <div>
+                    <h1 class="font-bold text-lg md:text-xl text-slate-800 leading-tight">Kuis Trigonometri</h1>
+                    <div class="flex items-center gap-1.5 mt-0.5">
+                        <span class="text-xs text-indigo-600 font-bold tracking-wide">SMK KARYA BAHANA MANDIRI</span>
+                        <span class="text-slate-300">•</span>
+                        <span class="text-xs text-slate-500 font-medium">Matematika</span>
+                    </div>
+                </div>
+            </div>
+            <div class="text-right">
+                <span class="inline-block bg-indigo-100 text-indigo-800 text-xs px-3 py-1 rounded-full font-semibold mb-0.5">Guru Pengampu</span>
+                <p class="text-xs md:text-sm font-bold text-indigo-950">Lia Septiani, M.Pd, Gr</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="relative z-10 my-auto px-4 py-6 w-full max-w-4xl mx-auto">
+
+        <!-- ================= PAGE 1: LOGIN ================= -->
+        <div id="loginPage" class="glass-card rounded-3xl p-6 md:p-10 shadow-2xl transition-all duration-300">
+            <div class="text-center mb-8">
+                <span class="bg-amber-100 text-amber-800 text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wider">
+                    <i class="fa-solid fa-triangle-exclamation mr-1"></i> Sistem Anti-Kecurangan Aktif
+                </span>
+                <h2 class="text-2xl md:text-3xl font-extrabold text-slate-800 mt-3">Evaluasi Matematika Kelas X</h2>
+                <p class="text-slate-600 text-sm mt-1">Materi: <span class="font-semibold text-indigo-600">Perbandingan dan Nilai Sudut Trigonometri</span></p>
+            </div>
+
+            <!-- Warning Box -->
+            <div class="bg-rose-50 border-l-4 border-rose-500 p-4 rounded-r-xl mb-6 text-xs md:text-sm text-rose-800">
+                <p class="font-bold mb-1"><i class="fa-solid fa-shield-halved mr-1"></i> Aturan & Ketentuan Pengerjaan:</p>
+                <ul class="list-disc list-inside space-y-1 text-slate-700">
+                    <li>Terdiri dari <span class="font-semibold">10 Soal Pilihan Ganda</span> dan <span class="font-semibold">5 Soal Uraian / Essai</span>.</li>
+                    <li>Nilai Minimum KKM adalah <span class="font-bold text-emerald-700">75</span>. Spesifikasi percobaan maks: <span class="font-bold text-rose-600">3 kali</span>.</li>
+                    <li><strong class="text-rose-600">Dilarang berpindah tab/layar!</strong> Sistem akan mencatat pelanggaran secara otomatis dan dapat membatalkan kuis.</li>
+                    <li>Jika hasil di bawah KKM setelah kesempatan habis, siswa <span class="font-semibold text-amber-700">wajib mengerjakan Pengayaan di buku tulis</span>.</li>
+                </ul>
+            </div>
+
+            <form id="loginForm" onsubmit="handleLogin(event)" class="space-y-5">
+                <div>
+                    <label class="block text-sm font-semibold text-slate-700 mb-1">Nama Lengkap Siswa</label>
+                    <div class="relative">
+                        <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400">
+                            <i class="fa-solid fa-user"></i>
+                        </span>
+                        <input type="text" id="studentName" required placeholder="Masukkan nama lengkap Anda" 
+                            class="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent text-sm font-medium">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-semibold text-slate-700 mb-1">Kelas</label>
+                    <div class="relative">
+                        <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400">
+                            <i class="fa-solid fa-school"></i>
+                        </span>
+                        <select id="studentClass" required class="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent text-sm font-medium bg-white">
+                            <option value="">-- Pilih Kelas Anda --</option>
+                            <option value="X TKR 4">X TKR 4</option>
+                            <option value="X TSM 2">X TSM 2</option>
+                            <option value="X TKJ 1">X TKJ 1</option>
+                            <option value="X TKJ 5">X TKJ 5</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div id="attemptStatusBox" class="hidden bg-indigo-50 p-3 rounded-xl border border-indigo-200 text-xs text-indigo-800 flex justify-between items-center">
+                    <span>Sisa Kesempatan Pengerjaan:</span>
+                    <span id="attemptCountBadge" class="font-bold bg-indigo-600 text-white px-2 py-0.5 rounded-md">3 / 3</span>
+                </div>
+
+                <button type="submit" class="w-full bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-700 hover:to-violet-700 text-white font-bold py-3.5 rounded-xl shadow-lg transition transform active:scale-98 flex justify-center items-center gap-2">
+                    <span>Mulai Pengerjaan Kuis</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </form>
+        </div>
+
+        <!-- ================= PAGE 2: QUIZ INTERFACE ================= -->
+        <div id="quizPage" class="hidden glass-card rounded-3xl p-5 md:p-8 shadow-2xl relative">
+            <!-- Quiz Header Info -->
+            <div class="flex flex-wrap justify-between items-center gap-3 pb-4 mb-6 border-b border-slate-200">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-full bg-indigo-600 text-white font-bold flex items-center justify-center text-sm shadow" id="avatarBadge">
+                        S
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-slate-800 text-sm md:text-base" id="quizStudentName">Nama Siswa</h3>
+                        <p class="text-xs text-slate-500" id="quizStudentClass">Kelas X</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center space-x-4">
+                    <!-- Violation Tracker -->
+                    <div class="bg-rose-100 text-rose-800 text-xs px-3 py-1.5 rounded-lg font-bold flex items-center gap-1.5" title="Batas kecurangan maks 3 kali">
+                        <i class="fa-solid fa-triangle-exclamation text-rose-600"></i>
+                        <span>Pelanggaran: <span id="violationCount">0</span>/3</span>
+                    </div>
+
+                    <!-- Timer -->
+                    <div class="bg-indigo-900 text-white px-3.5 py-1.5 rounded-lg text-xs md:text-sm font-mono font-bold flex items-center gap-2 shadow-inner">
+                        <i class="fa-regular fa-clock text-amber-400"></i>
+                        <span id="quizTimer">25:00</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="mb-6">
+                <div class="flex justify-between text-xs font-semibold text-slate-600 mb-1">
+                    <span>Kemajuan Kuis</span>
+                    <span id="progressText">Soal 1 dari 15</span>
+                </div>
+                <div class="w-full bg-slate-200 h-2.5 rounded-full overflow-hidden">
+                    <div id="progressBar" class="bg-gradient-to-r from-indigo-500 to-violet-600 h-full w-0 transition-all duration-300"></div>
+                </div>
+            </div>
+
+            <!-- Question Card Container -->
+            <div id="questionContainer" class="bg-white rounded-2xl p-5 md:p-6 shadow-sm border border-slate-200/80 mb-6">
+                <!-- Dynamic Content Loaded via JS -->
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="flex justify-between items-center">
+                <button id="prevBtn" onclick="changeQuestion(-1)" class="px-5 py-2.5 rounded-xl border border-slate-300 text-slate-600 font-semibold text-sm hover:bg-slate-100 disabled:opacity-40 disabled:cursor-not-allowed flex items-center gap-2">
+                    <i class="fa-solid fa-chevron-left"></i> SEBELUMNYA
+                </button>
+                <div id="quickNav" class="hidden md:flex gap-1 overflow-x-auto max-w-xs py-1">
+                    <!-- Quick question indicators loaded via JS -->
+                </div>
+                <button id="nextBtn" onclick="changeQuestion(1)" class="px-6 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-sm shadow-md flex items-center gap-2">
+                    SELANJUTNYA <i class="fa-solid fa-chevron-right"></i>
+                </button>
+                <button id="submitBtn" onclick="confirmSubmitQuiz()" class="hidden px-6 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-sm shadow-md flex items-center gap-2">
+                    <i class="fa-solid fa-check-double"></i> SELESAI & KIRIM
+                </button>
+            </div>
+        </div>
+
+        <!-- ================= PAGE 3: RESULT & REPORT ================= -->
+        <div id="resultPage" class="hidden glass-card rounded-3xl p-6 md:p-10 shadow-2xl">
+            <!-- Header Result Status -->
+            <div class="text-center mb-6">
+                <div id="statusIcon" class="w-20 h-20 rounded-full mx-auto flex items-center justify-center text-4xl mb-3 shadow-lg">
+                    <!-- Dynamic Icon -->
+                </div>
+                <h2 id="statusTitle" class="text-2xl md:text-3xl font-extrabold text-slate-800">Hasil Evaluasi</h2>
+                <p id="statusSubtitle" class="text-slate-600 text-sm mt-1">Perbandingan & Nilai Sudut Trigonometri</p>
+            </div>
+
+            <!-- Printable Certificate Container -->
+            <div id="certificateCard" class="bg-white p-6 md:p-8 rounded-2xl border-2 border-slate-200 shadow-md mb-6 relative overflow-hidden">
+                <!-- Watermark -->
+                <div class="absolute right-4 bottom-4 opacity-5 pointer-events-none">
+                    <img src="https://cdn.corenexis.com/f/R7u6jbL3y8O.png" alt="Watermark SMK Karya Bahana Mandiri" class="w-64 h-auto">
+                </div>
+
+                <div class="flex justify-between items-center border-b pb-4 mb-4">
+                    <div class="flex items-center gap-3">
+                        <img src="https://cdn.corenexis.com/f/R7u6jbL3y8O.png" alt="Logo SMK KBM" class="h-12 w-auto object-contain">
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <h3 class="text-sm md:text-base font-extrabold text-indigo-900 tracking-wider">SMK KARYA BAHANA MANDIRI</h3>
+                            </div>
+                            <h4 class="text-xs md:text-sm font-bold text-slate-800 leading-tight">LEMBAR HASIL EVALUASI MATEMATIKA</h4>
+                            <p class="text-[11px] text-slate-500">Materi: Perbandingan & Nilai Sudut Trigonometri</p>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <span class="text-xs font-semibold text-slate-400 block">TANGGAL PENGERJAAN</span>
+                        <span id="resDate" class="text-xs font-bold text-slate-700">21/10/2026</span>
+                    </div>
+                </div>
+
+                <!-- Info Grid -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 bg-slate-50 p-4 rounded-xl mb-6 text-xs md:text-sm">
+                    <div>
+                        <span class="text-slate-500 block text-[11px]">NAMA SISWA</span>
+                        <strong id="resName" class="text-slate-800 font-bold">---</strong>
+                    </div>
+                    <div>
+                        <span class="text-slate-500 block text-[11px]">KELAS</span>
+                        <strong id="resClass" class="text-slate-800 font-bold">---</strong>
+                    </div>
+                    <div>
+                        <span class="text-slate-500 block text-[11px]">PERCOBAAN KE-</span>
+                        <strong id="resAttempt" class="text-slate-800 font-bold">1 / 3</strong>
+                    </div>
+                    <div>
+                        <span class="text-slate-500 block text-[11px]">GURU PENGAMPUS</span>
+                        <strong class="text-indigo-900 font-bold">Lia Septiani, M.Pd, Gr</strong>
+                    </div>
+                </div>
+
+                <!-- Score Big Card -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                    <div class="bg-slate-900 text-white rounded-xl p-4 text-center flex flex-col justify-center">
+                        <span class="text-xs uppercase font-semibold text-slate-300">NILAI AKHIR</span>
+                        <span id="resScore" class="text-4xl md:text-5xl font-black text-amber-400 my-1">0</span>
+                        <span id="resKkmBadge" class="inline-block text-[10px] font-bold px-2 py-0.5 rounded mx-auto uppercase">KKM: 75</span>
+                    </div>
+                    <div class="bg-indigo-50 border border-indigo-100 rounded-xl p-4 flex flex-col justify-center">
+                        <span class="text-xs text-indigo-700 font-semibold mb-1">Rincian Jawaban:</span>
+                        <div class="text-xs space-y-1 text-slate-700">
+                            <p>• PG Benar: <strong id="resPgScore" class="text-emerald-600">0 / 10</strong></p>
+                            <p>• Uraian Terjawab: <strong id="resEssaiCount" class="text-indigo-600">0 / 5</strong></p>
+                            <p>• Catatan Kecurangan: <strong id="resCheatingCount" class="text-slate-800">0 kali</strong></p>
+                        </div>
+                    </div>
+                    <div class="bg-emerald-50 border border-emerald-100 rounded-xl p-4 flex flex-col justify-center text-xs">
+                        <span class="text-emerald-800 font-semibold mb-1">Status Standar Kompetensi:</span>
+                        <p id="resStatusDetail" class="text-slate-700 leading-relaxed">Status akan dihitung otomatis...</p>
+                    </div>
+                </div>
+
+                <!-- Pengayaan Section (Only visible if score < KKM) -->
+                <div id="remedialSection" class="hidden border-t-2 border-dashed border-amber-300 pt-4 mt-4">
+                    <div class="bg-amber-50 border border-amber-200 rounded-xl p-4">
+                        <h5 class="text-sm font-bold text-amber-900 flex items-center gap-2 mb-2">
+                            <i class="fa-solid fa-book-open-reader text-amber-600"></i>
+                            TUGAS PENGAYAAN / REMEDIAL (WAJIB DI BUKU TULIS)
+                        </h5>
+                        <p class="text-xs text-amber-800 mb-3">
+                            Nilai Anda belum memenuhi standar KKM (75). Tuliskan soal-soal berikut beserta cara penyelesaian lengkap di buku tulis Matematika untuk dikumpulkan ke <strong>Ibu Lia Septiani, M.Pd, Gr</strong>:
+                        </p>
+                        <ol id="remedialQuestionsList" class="list-decimal list-inside text-xs text-slate-800 space-y-2 bg-white p-3 rounded-lg border border-amber-100">
+                            <!-- Dynamic remedial questions list -->
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex flex-wrap justify-center md:justify-between items-center gap-3">
+                <div class="flex gap-2 w-full md:w-auto">
+                    <button onclick="downloadPDF()" class="flex-1 md:flex-none px-4 py-2.5 bg-rose-600 hover:bg-rose-700 text-white rounded-xl text-xs md:text-sm font-semibold flex items-center justify-center gap-2 shadow">
+                        <i class="fa-solid fa-file-pdf"></i> Cetak PDF
+                    </button>
+                    <button onclick="downloadJPG()" class="flex-1 md:flex-none px-4 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs md:text-sm font-semibold flex items-center justify-center gap-2 shadow">
+                        <i class="fa-solid fa-image"></i> Simpan JPG
+                    </button>
+                </div>
+
+                <div class="flex gap-2 w-full md:w-auto">
+                    <button id="retryBtn" onclick="retryQuiz()" class="hidden flex-1 md:flex-none px-5 py-2.5 bg-amber-500 hover:bg-amber-600 text-white rounded-xl text-xs md:text-sm font-semibold flex items-center justify-center gap-2 shadow">
+                        <i class="fa-solid fa-rotate-right"></i> Ulangi Kuis (<span id="remAttempts">2</span> sisa)
+                    </button>
+                    <button onclick="resetApp()" class="flex-1 md:flex-none px-5 py-2.5 bg-slate-700 hover:bg-slate-800 text-white rounded-xl text-xs md:text-sm font-semibold flex items-center justify-center gap-2 shadow">
+                        <i class="fa-solid fa-house"></i> Kembali ke Login
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="relative z-10 py-4 text-center text-xs text-slate-400">
+        <p>© 2026 Media Pembelajaran Matematika SMK - Anti-Cheating Quiz Engine</p>
+    </footer>
+
+    <!-- Anti-Cheating Violation Warning Modal -->
+    <div id="cheatModal" class="hidden fixed inset-0 bg-slate-900/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-md w-full p-6 text-center shadow-2xl border-2 border-rose-500 cheat-alert-anim">
+            <div class="w-16 h-16 bg-rose-100 text-rose-600 rounded-full flex items-center justify-center text-3xl mx-auto mb-4">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+            </div>
+            <h3 class="text-xl font-extrabold text-slate-800">PERINGATAN KECURANGAN!</h3>
+            <p class="text-xs text-slate-600 mt-2 mb-4 leading-relaxed">
+                Anda terdeteksi meninggalkan halaman kuis atau berpindah window/tab! Tindakan ini tercatat di sistem anti-kecurangan.
+            </p>
+            <div class="bg-rose-50 text-rose-800 p-3 rounded-xl font-bold text-xs mb-5">
+                Total Pelanggaran: <span id="modalCheatCount">1</span> / 3 kali
+            </div>
+            <button onclick="closeCheatModal()" class="w-full bg-rose-600 hover:bg-rose-700 text-white font-bold py-3 rounded-xl text-xs shadow-lg">
+                Saya Mengerti & Lanjutkan Pengerjaan
+            </button>
+        </div>
+    </div>
+
+    <!-- Confirm Submit Modal -->
+    <div id="submitConfirmModal" class="hidden fixed inset-0 bg-slate-900/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-md w-full p-6 text-center shadow-2xl">
+            <div class="w-16 h-16 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center text-3xl mx-auto mb-4">
+                <i class="fa-solid fa-paper-plane"></i>
+            </div>
+            <h3 class="text-lg font-bold text-slate-800">Kirim Jawaban Kuis?</h3>
+            <p class="text-xs text-slate-600 mt-2 mb-4">
+                Pastikan seluruh jawaban Pilihan Ganda dan Uraian telah terisi dengan benar sebelum mengirimkan.
+            </p>
+            <div class="flex gap-3">
+                <button onclick="closeSubmitModal()" class="flex-1 py-2.5 bg-slate-200 hover:bg-slate-300 text-slate-700 rounded-xl text-xs font-bold">
+                    Batal / Periksa Kembali
+                </button>
+                <button onclick="processFinalSubmission()" class="flex-1 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-xs font-bold shadow">
+                    Ya, Selesai & Kirim
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // Global App State
+        let currentUser = {
+            name: '',
+            class: '',
+            attemptsLeft: 3,
+            currentAttempt: 1,
+            history: []
+        };
+
+        let currentQuestionIndex = 0;
+        let userAnswers = {}; // { qIndex: selectedOption or text }
+        let timerInterval = null;
+        let timeRemaining = 25 * 60; // 25 Minutes
+        let violationCount = 0;
+        const KKM = 75;
+
+        // 10 Pilihan Ganda & 5 Uraian Question Bank
+        const questionBank = [
+            // Pilihan Ganda (1 - 10)
+            {
+                type: 'pg',
+                id: 1,
+                question: "Pada segitiga siku-siku ABC yang siku-siku di B, jika panjang sisi AB = 6 cm dan BC = 8 cm, berapakah nilai sin ∠A?",
+                options: {
+                    A: "3/5",
+                    B: "4/5",
+                    C: "3/4",
+                    D: "4/3",
+                    E: "5/4"
+                },
+                correct: "B"
+            },
+            {
+                type: 'pg',
+                id: 2,
+                question: "Nilai dari cos 60° + sin 30° - tan 45° adalah...",
+                options: {
+                    A: "1",
+                    B: "1/2",
+                    C: "0",
+                    D: "-1/2",
+                    E: "√3"
+                },
+                correct: "C"
+            },
+            {
+                type: 'pg',
+                id: 3,
+                question: "Diketahui cos θ = 12/13 pada kuadran I. Berapakah nilai dari tan θ?",
+                options: {
+                    A: "5/12",
+                    B: "12/5",
+                    C: "5/13",
+                    D: "13/5",
+                    E: "12/13"
+                },
+                correct: "A"
+            },
+            {
+                type: 'pg',
+                id: 4,
+                question: "Nilai dari sin 90° × cos 0° + cos 90° × sin 0° adalah...",
+                options: {
+                    A: "0",
+                    B: "1/2",
+                    C: "1",
+                    D: "2",
+                    E: "√2"
+                },
+                correct: "C"
+            },
+            {
+                type: 'pg',
+                id: 5,
+                question: "Seorang siswa TKR melihat puncak gedung dengan sudut elevasi 45°. Jika jarak siswa ke gedung 20 meter dan tinggi siswa diabaikan, tinggi gedung tersebut adalah...",
+                options: {
+                    A: "10 m",
+                    B: "20 m",
+                    C: "20√2 m",
+                    D: "20√3 m",
+                    E: "40 m"
+                },
+                correct: "B"
+            },
+            {
+                type: 'pg',
+                id: 6,
+                question: "Bentuk sederhana dari (1 - cos² A) / sin A adalah...",
+                options: {
+                    A: "sin A",
+                    B: "cos A",
+                    C: "tan A",
+                    D: "cosec A",
+                    E: "cot A"
+                },
+                correct: "A"
+            },
+            {
+                type: 'pg',
+                id: 7,
+                question: "Jika tan α = √3 (dengan α sudut lancip), maka besar sudut α adalah...",
+                options: {
+                    A: "30°",
+                    B: "45°",
+                    C: "60°",
+                    D: "90°",
+                    E: "120°"
+                },
+                correct: "C"
+            },
+            {
+                type: 'pg',
+                id: 8,
+                question: "Nilai dari sec 45° adalah...",
+                options: {
+                    A: "1/2",
+                    B: "1/2 √2",
+                    C: "√2",
+                    D: "√3",
+                    E: "2"
+                },
+                correct: "C"
+            },
+            {
+                type: 'pg',
+                id: 9,
+                question: "Pada kuadran II, kebalikan perbandingan trigonometri yang bernilai POSITIF adalah...",
+                options: {
+                    A: "Sinus dan Cosecan",
+                    B: "Cosinus dan Secan",
+                    C: "Tangen dan Cotangen",
+                    D: "Hanya Cosinus",
+                    E: "Hanya Tangen"
+                },
+                correct: "A"
+            },
+            {
+                type: 'pg',
+                id: 10,
+                question: "Nilai dari sin 45° + cos 45° adalah...",
+                options: {
+                    A: "1",
+                    B: "1/2 √2",
+                    C: "√2",
+                    D: "2√2",
+                    E: "0"
+                },
+                correct: "C"
+            },
+
+            // Uraian / Essai (11 - 15)
+            {
+                type: 'essai',
+                id: 11,
+                question: "Sebuah tangga sepanjang 6 meter disandarkan pada dinding tembok. Jika sudut yang dibentuk tangga dengan tanah adalah 30°, hitunglah tinggi dinding yang dicapai oleh tangga tersebut!",
+                hint: "Gunakan perbandingan sinus: sin 30° = Tinggi Dinding / Panjang Tangga"
+            },
+            {
+                type: 'essai',
+                id: 12,
+                question: "Hitunglah nilai eksak dari perkalian sudut istimewa berikut: (sin 60° × cos 30°) + (cos 60° × sin 30°). Tuliskan langkah perhitungannya!",
+                hint: "Substitusikan nilai tabel sudut istimewa masing-masing sudut."
+            },
+            {
+                type: 'essai',
+                id: 13,
+                question: "Suatu segitiga PQR siku-siku di Q. Jika sin P = 3/5, tentukan nilai cos P dan tan P!",
+                hint: "Cari sisi samping dengan Teorema Pythagoras lebih dahulu."
+            },
+            {
+                type: 'essai',
+                id: 14,
+                question: "Jelaskan mengapa nilai dari tan 90° tidak terdefinisi! Hubungkan dengan rumus tan θ = sin θ / cos θ.",
+                hint: "Perhatikan nilai cos 90° pada pembagi."
+            },
+            {
+                type: 'essai',
+                id: 15,
+                question: "Seorang teknisi jaringan TKJ memanjat tiang pemancar. Ia melihat titik A di tanah dengan sudut depresi 60°. Jika tinggi tiang pemancar 15√3 meter, berapa jarak titik A dari kaki tiang pemancar?",
+                hint: "Gunakan perbandingan tangen 60°."
+            }
+        ];
+
+        function handleLogin(e) {
+            e.preventDefault();
+            const name = document.getElementById('studentName').value.trim();
+            const cls = document.getElementById('studentClass').value;
+
+            if (!name || !cls) {
+                alert("Harap isi nama dan pilih kelas terlebih dahulu!");
+                return;
+            }
+
+            // Check previous local session data for attempts
+            const storageKey = `trigo_quiz_${name.toLowerCase().replace(/\s+/g, '')}_${cls}`;
+            const savedData = localStorage.getItem(storageKey);
+
+            if (savedData) {
+                const parsed = JSON.parse(savedData);
+                currentUser = parsed;
+                if (currentUser.attemptsLeft <= 0) {
+                    alert("Maaf, Anda telah menghabiskan seluruh 3 kesempatan pengerjaan kuis ini!");
+                    showResultPage();
+                    return;
+                }
+            } else {
+                currentUser = {
+                    name: name,
+                    class: cls,
+                    attemptsLeft: 3,
+                    currentAttempt: 1,
+                    history: []
+                };
+            }
+
+            // Update UI elements
+            document.getElementById('quizStudentName').innerText = currentUser.name;
+            document.getElementById('quizStudentClass').innerText = "Kelas " + currentUser.class;
+            document.getElementById('avatarBadge').innerText = currentUser.name.charAt(0).toUpperCase();
+
+            // Switch to quiz page
+            document.getElementById('loginPage').classList.add('hidden');
+            document.getElementById('quizPage').classList.remove('hidden');
+
+            startQuiz();
+        }
+
+        function startQuiz() {
+            currentQuestionIndex = 0;
+            userAnswers = {};
+            violationCount = 0;
+            document.getElementById('violationCount').innerText = violationCount;
+
+            // Setup anti-cheat listeners
+            setupAntiCheating();
+
+            // Setup timer
+            timeRemaining = 25 * 60;
+            clearInterval(timerInterval);
+            timerInterval = setInterval(updateTimer, 1000);
+
+            // Render first question
+            renderQuestion();
+            renderQuickNav();
+        }
+
+        function updateTimer() {
+            const minutes = Math.floor(timeRemaining / 60);
+            const seconds = timeRemaining % 60;
+            document.getElementById('quizTimer').innerText = 
+                `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+
+            if (timeRemaining <= 0) {
+                clearInterval(timerInterval);
+                alert("Waktu pengerjaan telah habis! Sistem akan mengirimkan jawaban Anda.");
+                processFinalSubmission();
+            }
+            timeRemaining--;
+        }
+
+        function renderQuestion() {
+            const q = questionBank[currentQuestionIndex];
+            const container = document.getElementById('questionContainer');
+            
+            // Progress Bar
+            const progress = ((currentQuestionIndex + 1) / questionBank.length) * 100;
+            document.getElementById('progressBar').style.width = `${progress}%`;
+            document.getElementById('progressText').innerText = `Soal ${currentQuestionIndex + 1} dari ${questionBank.length}`;
+
+            let html = `
+                <div class="flex items-center gap-2 mb-3">
+                    <span class="bg-indigo-100 text-indigo-800 text-xs font-bold px-2.5 py-1 rounded-md">
+                        ${q.type === 'pg' ? 'Pilihan Ganda' : 'Uraian / Essai'}
+                    </span>
+                    <span class="text-xs text-slate-400 font-semibold">Nomor ${currentQuestionIndex + 1}</span>
+                </div>
+                <h4 class="text-base md:text-lg font-bold text-slate-800 mb-4 leading-relaxed">${q.question}</h4>
+            `;
+
+            if (q.type === 'pg') {
+                html += `<div class="space-y-2.5 mt-4">`;
+                for (const [key, val] of Object.entries(q.options)) {
+                    const isSelected = userAnswers[currentQuestionIndex] === key;
+                    html += `
+                        <label onclick="selectOption('${key}')" class="flex items-start p-3.5 rounded-xl border-2 transition cursor-pointer ${
+                            isSelected 
+                            ? 'border-indigo-600 bg-indigo-50/80 text-indigo-950 font-semibold shadow-sm' 
+                            : 'border-slate-200 hover:border-slate-300 hover:bg-slate-50 text-slate-700'
+                        }">
+                            <input type="radio" name="q_${q.id}" value="${key}" ${isSelected ? 'checked' : ''} class="hidden">
+                            <span class="w-6 h-6 rounded-full border-2 flex items-center justify-center text-xs font-bold mr-3 mt-0.5 ${
+                                isSelected ? 'border-indigo-600 bg-indigo-600 text-white' : 'border-slate-300 text-slate-500'
+                            }">${key}</span>
+                            <span class="text-xs md:text-sm pt-0.5">${val}</span>
+                        </label>
+                    `;
+                }
+                html += `</div>`;
+            } else {
+                const currentText = userAnswers[currentQuestionIndex] || '';
+                html += `
+                    <div class="mt-4">
+                        <label class="block text-xs font-semibold text-slate-500 mb-2">
+                            <i class="fa-solid fa-lightbulb text-amber-500 mr-1"></i> Petunjuk: ${q.hint}
+                        </label>
+                        <textarea oninput="saveEssaiAnswer(this.value)" rows="5" 
+                            placeholder="Tuliskan jawaban dan langkah perhitungannya di sini..."
+                            class="w-full p-3.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-indigo-500 focus:outline-none text-xs md:text-sm font-medium text-slate-800">${currentText}</textarea>
+                    </div>
+                `;
+            }
+
+            container.innerHTML = html;
+
+            // Nav Button Visibility
+            document.getElementById('prevBtn').disabled = (currentQuestionIndex === 0);
+            if (currentQuestionIndex === questionBank.length - 1) {
+                document.getElementById('nextBtn').classList.add('hidden');
+                document.getElementById('submitBtn').classList.remove('hidden');
+            } else {
+                document.getElementById('nextBtn').classList.remove('hidden');
+                document.getElementById('submitBtn').classList.add('hidden');
+            }
+
+            updateQuickNav();
+        }
+
+        function selectOption(optKey) {
+            userAnswers[currentQuestionIndex] = optKey;
+            renderQuestion();
+        }
+
+        function saveEssaiAnswer(val) {
+            userAnswers[currentQuestionIndex] = val;
+            updateQuickNav();
+        }
+
+        function changeQuestion(step) {
+            currentQuestionIndex += step;
+            if (currentQuestionIndex < 0) currentQuestionIndex = 0;
+            if (currentQuestionIndex >= questionBank.length) currentQuestionIndex = questionBank.length - 1;
+            renderQuestion();
+        }
+
+        function renderQuickNav() {
+            const nav = document.getElementById('quickNav');
+            let html = '';
+            questionBank.forEach((q, idx) => {
+                const isAnswered = userAnswers[idx] !== undefined && userAnswers[idx] !== '';
+                html += `
+                    <button onclick="jumpToQuestion(${idx})" class="w-7 h-7 rounded-lg text-xs font-bold transition flex items-center justify-center ${
+                        idx === currentQuestionIndex 
+                        ? 'bg-indigo-600 text-white ring-2 ring-indigo-300' 
+                        : isAnswered 
+                        ? 'bg-emerald-100 text-emerald-800 border border-emerald-300' 
+                        : 'bg-slate-100 text-slate-500 border border-slate-200'
+                    }">${idx + 1}</button>
+                `;
+            });
+            nav.innerHTML = html;
+        }
+
+        function updateQuickNav() {
+            renderQuickNav();
+        }
+
+        function jumpToQuestion(idx) {
+            currentQuestionIndex = idx;
+            renderQuestion();
+        }
+
+        function setupAntiCheating() {
+            // Anti tab switch / window blur detection
+            window.addEventListener('blur', handleCheatingViolation);
+            document.addEventListener('visibilitychange', () => {
+                if (document.hidden) {
+                    handleCheatingViolation();
+                }
+            });
+
+            // Prevent Right Click & Key Combinations
+            document.addEventListener('contextmenu', e => e.preventDefault());
+            document.addEventListener('keydown', e => {
+                // Prevent Ctrl+C, Ctrl+V, F12, Ctrl+Shift+I
+                if (e.ctrlKey && (e.key === 'c' || e.key === 'v' || e.key === 'u' || e.key === 's')) {
+                    e.preventDefault();
+                }
+            });
+        }
+
+        function handleCheatingViolation() {
+            // Only count if quiz is currently active
+            if (document.getElementById('quizPage').classList.contains('hidden')) return;
+
+            violationCount++;
+            document.getElementById('violationCount').innerText = violationCount;
+            document.getElementById('modalCheatCount').innerText = violationCount;
+
+            // Reduce time by 1 minute as penalty
+            timeRemaining = Math.max(0, timeRemaining - 60);
+
+            // Show Warning Modal
+            document.getElementById('cheatModal').classList.remove('hidden');
+
+            if (violationCount >= 3) {
+                alert("Anda telah terdeteksi melakukan kecurangan sebanyak 3 kali! Kuis akan diselesaikan secara otomatis.");
+                closeCheatModal();
+                processFinalSubmission();
+            }
+        }
+
+        function closeCheatModal() {
+            document.getElementById('cheatModal').classList.add('hidden');
+        }
+
+        function confirmSubmitQuiz() {
+            document.getElementById('submitConfirmModal').classList.remove('hidden');
+        }
+
+        function closeSubmitModal() {
+            document.getElementById('submitConfirmModal').classList.add('hidden');
+        }
+
+        function processFinalSubmission() {
+            closeSubmitModal();
+            clearInterval(timerInterval);
+
+            // Calculate PG Score (Max 70 points)
+            let pgCorrect = 0;
+            let pgTotal = 10;
+            questionBank.filter(q => q.type === 'pg').forEach((q, idx) => {
+                if (userAnswers[idx] === q.correct) {
+                    pgCorrect++;
+                }
+            });
+
+            const pgScore = (pgCorrect / pgTotal) * 70; // 70% weight for PG
+
+            // Calculate Essai Count & Auto-Points (Max 30 points)
+            let essaiAnswered = 0;
+            let essaiTotal = 5;
+            questionBank.filter(q => q.type === 'essai').forEach((q, idx) => {
+                const qIdx = idx + 10;
+                if (userAnswers[qIdx] && userAnswers[qIdx].trim().length > 5) {
+                    essaiAnswered++;
+                }
+            });
+
+            const essaiScore = (essaiAnswered / essaiTotal) * 30; // 30% weight for Essai completion
+
+            // Final Combined Score
+            let finalScore = Math.round(pgScore + essaiScore);
+
+            // Penalty for violations
+            if (violationCount > 0) {
+                finalScore = Math.max(0, finalScore - (violationCount * 5));
+            }
+
+            // Save History & Attempt
+            currentUser.attemptsLeft--;
+            currentUser.history.push({
+                attemptNumber: currentUser.currentAttempt,
+                score: finalScore,
+                pgCorrect: pgCorrect,
+                essaiAnswered: essaiAnswered,
+                violations: violationCount,
+                date: new Date().toLocaleDateString('id-ID')
+            });
+
+            // Update LocalStorage
+            const storageKey = `trigo_quiz_${currentUser.name.toLowerCase().replace(/\s+/g, '')}_${currentUser.class}`;
+            localStorage.setItem(storageKey, JSON.stringify(currentUser));
+
+            showResultPage(finalScore, pgCorrect, essaiAnswered);
+        }
+
+        function showResultPage(finalScore, pgCorrect, essaiAnswered) {
+            document.getElementById('quizPage').classList.add('hidden');
+            document.getElementById('resultPage').classList.remove('hidden');
+
+            const latestHistory = currentUser.history[currentUser.history.length - 1] || {
+                score: finalScore || 0,
+                pgCorrect: pgCorrect || 0,
+                essaiAnswered: essaiAnswered || 0,
+                violations: violationCount || 0,
+                date: new Date().toLocaleDateString('id-ID')
+            };
+
+            const score = latestHistory.score;
+
+            // Populate Certificate
+            document.getElementById('resName').innerText = currentUser.name;
+            document.getElementById('resClass').innerText = currentUser.class;
+            document.getElementById('resAttempt').innerText = `${currentUser.currentAttempt} / 3`;
+            document.getElementById('resDate').innerText = latestHistory.date;
+            document.getElementById('resScore').innerText = score;
+            document.getElementById('resPgScore').innerText = `${latestHistory.pgCorrect} / 10`;
+            document.getElementById('resEssaiCount').innerText = `${latestHistory.essaiAnswered} / 5`;
+            document.getElementById('resCheatingCount').innerText = `${latestHistory.violations} kali`;
+
+            const statusIcon = document.getElementById('statusIcon');
+            const statusTitle = document.getElementById('statusTitle');
+            const resKkmBadge = document.getElementById('resKkmBadge');
+            const resStatusDetail = document.getElementById('resStatusDetail');
+            const remedialSection = document.getElementById('remedialSection');
+
+            if (score >= KKM) {
+                // LULUS KKM
+                statusIcon.className = "w-20 h-20 rounded-full mx-auto flex items-center justify-center text-4xl mb-3 shadow-lg bg-emerald-100 text-emerald-600";
+                statusIcon.innerHTML = `<i class="fa-solid fa-trophy"></i>`;
+                statusTitle.innerText = "SELAMAT! ANDA LULUS KKM";
+                resKkmBadge.className = "inline-block text-[10px] font-bold px-2 py-0.5 rounded mx-auto uppercase bg-emerald-500 text-white";
+                resKkmBadge.innerText = "LULUS KKM (≥75)";
+
+                resStatusDetail.innerHTML = `
+                    <span class="text-emerald-700 font-bold block">Kompetensi Tercapai!</span>
+                    Siswa telah menguasai materi Perbandingan dan Nilai Sudut Trigonometri dengan sangat baik. Laporan ini dapat diserahkan langsung ke guru mapel.
+                `;
+
+                remedialSection.classList.add('hidden');
+            } else {
+                // BELUM LULUS KKM
+                statusIcon.className = "w-20 h-20 rounded-full mx-auto flex items-center justify-center text-4xl mb-3 shadow-lg bg-rose-100 text-rose-600";
+                statusIcon.innerHTML = `<i class="fa-solid fa-triangle-exclamation"></i>`;
+                statusTitle.innerText = "BELUM MEMENUHI KKM";
+                resKkmBadge.className = "inline-block text-[10px] font-bold px-2 py-0.5 rounded mx-auto uppercase bg-rose-500 text-white";
+                resKkmBadge.innerText = "BELUM KKM (<75)";
+
+                resStatusDetail.innerHTML = `
+                    <span class="text-rose-700 font-bold block">Wajib Pengayaan / Remedial!</span>
+                    Nilai Anda masih di bawah KKM (75). Kerjakan daftar soal di bawah ini pada buku tulis matematika Anda!
+                `;
+
+                // Show Remedial Questions
+                remedialSection.classList.remove('hidden');
+                generateRemedialQuestions();
+            }
+
+            // Retry Button
+            const retryBtn = document.getElementById('retryBtn');
+            const remAttempts = document.getElementById('remAttempts');
+            if (currentUser.attemptsLeft > 0 && score < KKM) {
+                retryBtn.classList.remove('hidden');
+                remAttempts.innerText = currentUser.attemptsLeft;
+            } else {
+                retryBtn.classList.add('hidden');
+            }
+        }
+
+        function generateRemedialQuestions() {
+            const list = document.getElementById('remedialQuestionsList');
+            let html = '';
+
+            // Find missed PG questions for remediation (without showing correct answers)
+            let missedCount = 0;
+            questionBank.forEach((q, idx) => {
+                if (q.type === 'pg' && userAnswers[idx] !== q.correct) {
+                    missedCount++;
+                    html += `
+                        <li class="pb-1.5 border-b border-amber-100 last:border-0">
+                            <strong>[Soal PG No. ${q.id}]</strong> ${q.question}
+                            <div class="text-[11px] text-amber-900 mt-0.5"><em>Tugas: Tulis kembali soal ini dan kerjakan langkah penyelesaian lengkapnya di buku tulis.</em></div>
+                        </li>
+                    `;
+                }
+            });
+
+            if (missedCount === 0) {
+                // Fallback essay questions for remediation
+                html += `
+                    <li>Kerjakan ulang seluruh 5 soal uraian (Essai No. 11 - 15) lengkap dengan diketahui, ditanyakan, dan langkah penyelesaiannya di buku tulis Matematika!</li>
+                `;
+            }
+
+            list.innerHTML = html;
+        }
+
+        function downloadPDF() {
+            const element = document.getElementById('certificateCard');
+            const opt = {
+                margin:       0.3,
+                filename:     `Hasil_Kuis_Trigonometri_${currentUser.name}_${currentUser.class}.pdf`,
+                image:        { type: 'jpeg', quality: 0.98 },
+                html2canvas:  { scale: 2 },
+                jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+            };
+            html2pdf().set(opt).from(element).save();
+        }
+
+        function downloadJPG() {
+            const element = document.getElementById('certificateCard');
+            html2canvas(element, { scale: 2 }).then(canvas => {
+                const link = document.createElement('a');
+                link.download = `Hasil_Kuis_Trigonometri_${currentUser.name}_${currentUser.class}.jpg`;
+                link.href = canvas.toDataURL('image/jpeg');
+                link.click();
+            });
+        }
+
+        function retryQuiz() {
+            if (currentUser.attemptsLeft <= 0) {
+                alert("Kesempatan Anda telah habis!");
+                return;
+            }
+            currentUser.currentAttempt++;
+            document.getElementById('resultPage').classList.add('hidden');
+            document.getElementById('quizPage').classList.remove('hidden');
+            startQuiz();
+        }
+
+        function resetApp() {
+            document.getElementById('resultPage').classList.add('hidden');
+            document.getElementById('loginPage').classList.remove('hidden');
+            document.getElementById('loginForm').reset();
+        }
+    </script>
+</body>
+</html>
